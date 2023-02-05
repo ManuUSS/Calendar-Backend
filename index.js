@@ -5,10 +5,7 @@ const app = express();
 
 app.use( express.static( 'public' ) );
 
-// app.get('/', ( req, res ) => {
-//     console.log('Se requiere un slash')
-//     res.json({ ok: true, message: 'Siuuu' });
-// });
+app.use('/api/auth', require('./routes/auth') );
 
 app.listen( process.env.PORT, () => {
     console.log(`Servidor corriendo en puerto ${ process.env.PORT }`)
