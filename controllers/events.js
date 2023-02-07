@@ -13,6 +13,9 @@ const getEvent = ( req, res = response ) => {
 }
 
 const createEvent = ( req, res = response ) => {
+
+    
+
     return {
         ok: true,
         msg: 'createEvent'
