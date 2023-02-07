@@ -1,24 +1,39 @@
 const { response } = require('express');
+const Event = require('../models/Event');
 
 /**
  * Event Routes
  * /api/events 
  */
 
-const getEvent = ( req, res = response ) => {
+const getEvent = async ( req, res = response ) => {
+
+
     return {
         ok: true,
         msg: 'getEvent'
     }
 }
 
-const createEvent = ( req, res = response ) => {
+const createEvent = async ( req, res = response ) => {
 
     
+    const event = new Event( req.body );
 
-    return {
-        ok: true,
-        msg: 'createEvent'
+    try {
+        
+        event.user = req.uid;
+
+        const eventOnDb = await event.save();
+
+        
+
+    } catch ( error ) {
+        console.log( error );
+        return res.status( 500 ).json({ 
+            ok: false,
+            msg: 'Hable con Juan'
+        })
     }
 }
 
