@@ -95,6 +95,8 @@ const renewUser = async ( req, res = response ) => {
 
     res.json({
         ok: true,
+        uid,
+        name,
         token
     })
 }
